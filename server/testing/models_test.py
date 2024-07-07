@@ -32,14 +32,14 @@ class TestRestaurantPizza:
 
         with app.app_context():
 
-            with pytest.raises(ValueError):
-                pizza = Pizza(
-                    name=Faker().name(), ingredients="Dough, Sauce, Cheese")
-                restaurant = Restaurant(name=Faker().name(), address='Main St')
-                db.session.add(pizza)
-                db.session.add(restaurant)
-                db.session.commit()
+            pizza = Pizza(
+                name=Faker().name(), ingredients="Dough, Sauce, Cheese")
+            restaurant = Restaurant(name=Faker().name(), address='Main St')
+            db.session.add(pizza)
+            db.session.add(restaurant)
+            db.session.commit()
 
+            with pytest.raises(ValueError):
                 restaurant_pizza = RestaurantPizza(
                     restaurant_id=restaurant.id, pizza_id=pizza.id, price=0)
                 db.session.add(restaurant_pizza)
@@ -50,14 +50,14 @@ class TestRestaurantPizza:
 
         with app.app_context():
 
-            with pytest.raises(ValueError):
-                pizza = Pizza(
-                    name=Faker().name(), ingredients="Dough, Sauce, Cheese")
-                restaurant = Restaurant(name=Faker().name(), address='Main St')
-                db.session.add(pizza)
-                db.session.add(restaurant)
-                db.session.commit()
+            pizza = Pizza(
+                name=Faker().name(), ingredients="Dough, Sauce, Cheese")
+            restaurant = Restaurant(name=Faker().name(), address='Main St')
+            db.session.add(pizza)
+            db.session.add(restaurant)
+            db.session.commit()
 
+            with pytest.raises(ValueError):
                 restaurant_pizza = RestaurantPizza(
                     restaurant_id=restaurant.id, pizza_id=pizza.id, price=31)
                 db.session.add(restaurant_pizza)
